@@ -10,20 +10,22 @@ template<class T> inline static void print(T *arr, int size){
     cout<<"]"<<endl;
 }
 
-template<class T> inline static void BubbleSort(T *arr, int size) {
-    for(int i=0; i<size; i++){
-        for(int j=0; j<size-i-1; j++){
-            if(arr[j] > arr[j+1]){
-                swap(arr[j], arr[j+1]);
-            }
+template<class T> inline static void InsertionSort(T *arr, int size) {
+    for(int i=1; i<size; i++){
+        T key = arr[i];
+        int j=i-1;
+        while(j>=0 && arr[j]>key) {
+            arr[j+1] = arr[j];
+            j--;
         }
+        arr[j+1] = key;
     }
 }
 
 int main(){
     int arr[] = {5,7,1,3,2};
     int size = sizeof(arr)/sizeof(arr[0]);
-    BubbleSort<int>(arr, size);
+    InsertionSort<int>(arr, size);
     print<int>(arr, size);
     return 0;
 }

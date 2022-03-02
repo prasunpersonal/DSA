@@ -7,7 +7,7 @@ template<class T> inline static void print(T *arr, int size){
         cout<<arr[i];
         if(i!=size-1) cout<<", ";
     }
-    cout<<"]";
+    cout<<"]"<<endl;
 }
 
 template<class T> static int partition(T *arr, int start, int end) {
