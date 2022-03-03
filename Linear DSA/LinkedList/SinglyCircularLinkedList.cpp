@@ -30,11 +30,18 @@ template<class T> class SinglyCircularLinkedList {
             }
         }
         void insertNodeFront(T data){
-            Node<T>* ptr = this->head;
-            while(ptr->next != this->head){
-                ptr = ptr->next;
+            if(this->head == NULL){
+                this->head = new Node<T>(data);
+                this->head->next = this->head;
+            } else {
+                Node<T>* ptr = this->head;
+                while(ptr->next != this->head){
+                    ptr = ptr->next;
+                }
+                Node<T> *newNode = new Node<T>(data, head);
+                ptr->next = newNode;
+                this->head = newNode;
             }
-            ptr->next = new Node<T>(data, this->head);
         }
         void removeNode(T data){
             if(this->head != NULL){

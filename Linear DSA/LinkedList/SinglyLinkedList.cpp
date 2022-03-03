@@ -37,8 +37,13 @@ template<class T> class SinglyLinkedList {
                     this->head = this->head->next;
                 } else {
                     Node<T>* ptr = this->head;
-                    while(ptr->next != NULL && ptr->next->data != data) ptr = ptr->next;
-                    if(ptr->next != NULL) ptr->next = ptr->next->next;
+                    while(ptr->next != NULL) {
+                        if(ptr->next->data == data) {
+                            ptr->next = ptr->next->next;
+                            break;
+                        }
+                        ptr = ptr->next;
+                    }
                 }
             }
         }
@@ -48,8 +53,11 @@ template<class T> class SinglyLinkedList {
                     this->head = this->head->next;
                 } else {
                     Node<T>* ptr = this->head;
-                    for(int i=0; i<index-1 && ptr->next != NULL; i++) ptr = ptr->next;
-                    if(ptr->next != NULL) ptr->next = ptr->next->next;
+                    for(int i=0; ptr->next != NULL; i++, ptr = ptr->next) {
+                        if(i==index-1) {
+                            ptr->next = ptr->next->next;
+                        }
+                    }
                 }
             }
         }
@@ -85,7 +93,7 @@ int main(){
     list->insertNodeFront(25);
     list->print();
 
-    list->removeIndex(20);
+    list->removeIndex(2);
     list->print();
 
     cout<<list->indexOf(50)<<endl;
