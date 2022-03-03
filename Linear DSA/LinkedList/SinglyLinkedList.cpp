@@ -24,9 +24,7 @@ template<class T> class SinglyLinkedList {
                 this->head = new Node<T>(data);
             } else {
                 Node<T>* ptr = this->head;
-                while(ptr->next != NULL){
-                    ptr = ptr->next;
-                }
+                while(ptr->next != NULL) ptr = ptr->next;
                 ptr->next = new Node<T>(data);
             }
         }
