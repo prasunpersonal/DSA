@@ -75,7 +75,7 @@ template<class T> class SinglyLinkedList {
                 cout<<ptr->data<<"->";
                 ptr = ptr->next;
             }
-                cout<<"NULL"<<endl;
+            cout<<"NULL"<<endl;
         }
 };
 

@@ -16,7 +16,7 @@ template<class T> class SinglyCircularLinkedList {
     private:
         Node<T>* head;
     public:
-        SinglyLinkedList(){
+        SinglyCircularLinkedList(){
             this->head = NULL;
         }
         void insertNode(T data) {
@@ -46,6 +46,13 @@ template<class T> class SinglyCircularLinkedList {
         void removeNode(T data){
             if(this->head != NULL){
                 if(this->head->data == data) {
+                    if(this->head->next == this->head) {
+                        this->head == NULL;
+                    } else {
+                        Node<T>* ptr = this->head;
+                        while(ptr->next != this->head && ptr->next->data != data) ptr = ptr->next;
+                        if(ptr->next != NULL) ptr->next = ptr->next->next;
+                    }
                     this->head = this->head->next;
                 } else {
                     Node<T>* ptr = this->head;
