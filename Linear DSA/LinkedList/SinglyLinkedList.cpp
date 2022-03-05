@@ -70,12 +70,14 @@ template<class T> class SinglyLinkedList {
             return -1;
         }
         void print(){
+            cout<<"[";
             Node<T>* ptr = this->head;
-            while(ptr != NULL){
-                cout<<ptr->data<<"->";
+            while(ptr != NULL) {
+                cout<<ptr->data;
                 ptr = ptr->next;
+                if(ptr != NULL) cout<<", ";
             }
-            cout<<"NULL"<<endl;
+            cout<<"]"<<endl;
         }
 };
 
