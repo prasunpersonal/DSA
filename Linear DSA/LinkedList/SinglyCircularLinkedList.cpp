@@ -111,19 +111,19 @@ template<class T> class SinglyCircularLinkedList {
 int main(){
     SinglyCircularLinkedList<int> *list = new SinglyCircularLinkedList<int>;
     list->insertNode(5);
-    list->insertNode(10);
-    list->insertNode(15);
-    list->insertNode(20);
+    // list->insertNode(10);
+    // list->insertNode(15);
+    // list->insertNode(20);
     list->print();
 
     list->removeNode(15);
     list->print();
 
-    list->insertNodeFront(25);
-    list->print();
+    // list->insertNodeFront(25);
+    // list->print();
 
-    list->removeIndex(3);
-    list->print();
+    // list->removeIndex(3);
+    // list->print();
 
     cout<<list->indexOf(25)<<endl;
     return 0;
