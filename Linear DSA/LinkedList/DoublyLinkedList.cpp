@@ -76,13 +76,11 @@ template<class T> class DoublyLinkedList {
         }
         void print(){
             cout<<"[";
-            if(this->head != NULL) {
-                Node<T>* ptr = this->head;
-                 while(ptr != NULL) {
-                    cout<<ptr->data;
-                    ptr = ptr->next;
-                    if(ptr != NULL) cout<<", ";
-                }
+            Node<T>* ptr = this->head;
+            while(ptr != NULL) {
+                cout<<ptr->data;
+                ptr = ptr->next;
+                if(ptr != NULL) cout<<", ";
             }
             cout<<"]"<<endl;
         }
