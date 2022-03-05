@@ -45,13 +45,18 @@ template<class T> class SinglyCircularLinkedList {
         }
         void removeNode(T data){
             if(this->head != NULL){
-                if(this->head->next == this->head) {
-                    this->head = NULL;
+                if(this->head->data == data) {
+                    if(this->head->next == this->head) {
+                        this->head = NULL;
+                    } else {
+                        Node<T> *ptr = this->head;
+                        while(ptr->next != this->head) ptr = ptr->next;
+                        this->head = ptr->next = ptr->next->next;
+                    }
                 } else {
                     Node<T> *ptr = this->head;
                     do {
                         if(ptr->next->data == data) {
-                            if(ptr->next == this->head) this->head = ptr->next->next;
                             ptr->next = ptr->next->next;
                             return;
                         }
@@ -68,8 +73,7 @@ template<class T> class SinglyCircularLinkedList {
                     } else{
                         Node<T> *ptr = this->head;
                         while(ptr->next != this->head) ptr = ptr->next;
-                        this->head = ptr->next->next;
-                        ptr->next = ptr->next->next;
+                        this->head = ptr->next = ptr->next->next;
                     }
                 } else {
                     Node<T>* ptr = this->head;
@@ -77,7 +81,7 @@ template<class T> class SinglyCircularLinkedList {
                     do{
                         if(i==index-1){
                             ptr->next = ptr->next->next;
-                            break;
+                            return;
                         }
                         ptr = ptr->next;
                         i++;
@@ -111,7 +115,7 @@ template<class T> class SinglyCircularLinkedList {
 int main(){
     SinglyCircularLinkedList<int> *list = new SinglyCircularLinkedList<int>;
     list->insertNode(5);
-    // list->insertNode(10);
+    list->insertNode(10);
     // list->insertNode(15);
     // list->insertNode(20);
     list->print();
@@ -119,11 +123,11 @@ int main(){
     list->removeNode(15);
     list->print();
 
-    // list->insertNodeFront(25);
-    // list->print();
+    list->insertNodeFront(25);
+    list->print();
 
-    // list->removeIndex(3);
-    // list->print();
+    list->removeIndex(3);
+    list->print();
 
     cout<<list->indexOf(25)<<endl;
     return 0;

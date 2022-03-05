@@ -75,12 +75,16 @@ template<class T> class DoublyLinkedList {
                     }
                 } else {
                     Node<T>* ptr = this->head;
-                    for(int i=0; ptr != NULL; i++, ptr = ptr->next) {
+                    int i=0;
+                    do {
                         if(i==index) {
                             ptr->prev->next = ptr->next;
-                            if(ptr->next != NULL) ptr->next->prev = ptr->prev;
+                            ptr->next->prev = ptr->prev;
+                            return;
                         }
-                    }
+                        ptr = ptr->next;
+                        i++;
+                    } while (ptr != this->head);
                 }
             }
         }
@@ -124,7 +128,7 @@ int main(){
     list->insertNodeFront(40);
     list->print();
 
-    list->removeIndex(0);
+    list->removeIndex(3);
     list->print();
 
     cout<<list->indexOf(50)<<endl;
