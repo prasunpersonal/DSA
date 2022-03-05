@@ -77,15 +77,12 @@ template<class T> class SinglyCircularLinkedList {
                     }
                 } else {
                     Node<T>* ptr = this->head;
-                    int i=0;
-                    do{
+                    for(int i=0; ptr->next != this->head; i++, ptr = ptr->next) {
                         if(i==index-1){
                             ptr->next = ptr->next->next;
                             return;
                         }
-                        ptr = ptr->next;
-                        i++;
-                    } while (ptr != this->head);
+                    }
                 }
             }
         }
@@ -99,16 +96,16 @@ template<class T> class SinglyCircularLinkedList {
             return -1;
         }
         void print(){
-            if(this->head == NULL) {
-                cout<<"NULL"<<endl;
-            } else {
+            cout<<"[";
+            if(this->head != NULL) {
                 Node<T>* ptr = this->head;
-                do{
-                    cout<<ptr->data<<" ";
+                do {
+                    cout<<ptr->data;
                     ptr = ptr->next;
-                }while(ptr != this->head);
-                cout<<endl;
+                    if(ptr != this->head) cout<<", ";
+                } while(ptr != this->head);
             }
+            cout<<"]"<<endl;
         }
 };
 
@@ -116,8 +113,8 @@ int main(){
     SinglyCircularLinkedList<int> *list = new SinglyCircularLinkedList<int>;
     list->insertNode(5);
     list->insertNode(10);
-    // list->insertNode(15);
-    // list->insertNode(20);
+    list->insertNode(15);
+    list->insertNode(20);
     list->print();
 
     list->removeNode(15);
