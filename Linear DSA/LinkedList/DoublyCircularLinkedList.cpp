@@ -75,16 +75,13 @@ template<class T> class DoublyLinkedList {
                     }
                 } else {
                     Node<T>* ptr = this->head;
-                    int i=0;
-                    do {
+                    for(int i=0; ptr != this->head; i++, ptr = ptr->next) {
                         if(i==index) {
                             ptr->prev->next = ptr->next;
                             ptr->next->prev = ptr->prev;
                             return;
                         }
-                        ptr = ptr->next;
-                        i++;
-                    } while (ptr != this->head);
+                    }
                 }
             }
         }
