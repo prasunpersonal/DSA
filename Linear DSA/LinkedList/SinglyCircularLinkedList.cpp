@@ -45,48 +45,66 @@ template<class T> class SinglyCircularLinkedList {
         }
         void removeNode(T data){
             if(this->head != NULL){
-                if(this->head->data == data) {
-                    if(this->head->next == this->head) {
-                        this->head == NULL;
-                    } else {
-                        Node<T>* ptr = this->head;
-                        while(ptr->next != this->head && ptr->next->data != data) ptr = ptr->next;
-                        if(ptr->next != NULL) ptr->next = ptr->next->next;
-                    }
-                    this->head = this->head->next;
+                if(this->head->next == this->head) {
+                    this->head = NULL;
                 } else {
-                    Node<T>* ptr = this->head;
-                    while(ptr->next != NULL && ptr->next->data != data) ptr = ptr->next;
-                    if(ptr->next != NULL) ptr->next = ptr->next->next;
+                    Node<T> *ptr = this->head;
+                    do {
+                        if(ptr->next->data == data) {
+                            if(ptr->next == this->head) this->head = ptr->next->next;
+                            ptr->next = ptr->next->next;
+                            return;
+                        }
+                        ptr = ptr->next;
+                    } while(ptr != this->head);
                 }
             }
         }
         void removeIndex(int index) {
             if(this->head != NULL) {
                 if(index == 0) {
-                    this->head = this->head->next;
+                    if(this->head->next == this->head) {
+                        this->head = NULL;
+                    } else{
+                        Node<T> *ptr = this->head;
+                        while(ptr->next != this->head) ptr = ptr->next;
+                        this->head = ptr->next->next;
+                        ptr->next = ptr->next->next;
+                    }
                 } else {
                     Node<T>* ptr = this->head;
-                    for(int i=0; i<index-1 && ptr->next != NULL; i++) ptr = ptr->next;
-                    if(ptr->next != NULL) ptr->next = ptr->next->next;
+                    int i=0;
+                    do{
+                        if(i==index-1){
+                            ptr->next = ptr->next->next;
+                            break;
+                        }
+                        ptr = ptr->next;
+                        i++;
+                    } while (ptr != this->head);
                 }
             }
         }
         int indexOf(T data){
             Node<T>* ptr = this->head;
-            for(int i=0; ptr != NULL; i++){
+            int i=0;
+            do {
                 if(ptr->data == data) return i;
-                ptr = ptr->next;
-            }
+                ptr = ptr->next; i++;
+            } while (ptr != this->head);
             return -1;
         }
         void print(){
-            Node<T>* ptr = this->head;
-            while(ptr != NULL){
-                cout<<ptr->data<<"->";
-                ptr = ptr->next;
-            }
+            if(this->head == NULL) {
                 cout<<"NULL"<<endl;
+            } else {
+                Node<T>* ptr = this->head;
+                do{
+                    cout<<ptr->data<<" ";
+                    ptr = ptr->next;
+                }while(ptr != this->head);
+                cout<<endl;
+            }
         }
 };
 
@@ -98,15 +116,15 @@ int main(){
     list->insertNode(20);
     list->print();
 
-    list->removeNode(5);
+    list->removeNode(15);
     list->print();
 
     list->insertNodeFront(25);
     list->print();
 
-    list->removeIndex(20);
+    list->removeIndex(3);
     list->print();
 
-    cout<<list->indexOf(50)<<endl;
+    cout<<list->indexOf(25)<<endl;
     return 0;
 }
