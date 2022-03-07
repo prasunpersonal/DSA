@@ -13,11 +13,7 @@ template<class T> inline static void print(T *arr, int size){
 template<class T> inline static void SelectionSort(T *arr, int size) {
     for(int i=0; i<size-1; i++){
         int min_elm = i;
-        for(int j=i+1; j<size; j++){
-            if(arr[j] < arr[min_elm]){
-                min_elm = j;
-            }
-        }
+        for(int j=i+1; j<size; j++) if(arr[j] < arr[min_elm]) min_elm = j;
         swap(arr[i], arr[min_elm]);
     }
 }

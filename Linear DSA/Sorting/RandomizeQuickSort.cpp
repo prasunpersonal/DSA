@@ -15,12 +15,7 @@ template<class T> static int partition(T *arr, int start, int end) {
     swap(arr[end], arr[start + rand() % (end-start)]);
     T pivot = arr[end];
     int i = start;
-    for(int j=start; j<=end; j++) {
-        if(arr[j] < pivot) {
-            swap(arr[i++], arr[j]);
-            cout<<"ok\n";
-        }
-    }
+    for(int j=start; j<=end; j++) if(arr[j] < pivot) swap(arr[i++], arr[j]);
     swap(arr[i], arr[end]);
     return i;
 }

@@ -21,11 +21,8 @@ template<class T> inline static void Merge(T *arr, int start, int mid, int end) 
     int a=0, b=0;
     for(int i=start; a<n1 || b<n2; i++){
         if (a<n1 && b<n2) {
-            if(L[a] <= R[b]) {
-                arr[i] = L[a++];
-            } else {
-                arr[i] = R[b++];
-            }
+            if(L[a] <= R[b]) arr[i] = L[a++];
+            else  arr[i] = R[b++];
         } else if(a<n1) {
             arr[i] = L[a++];
         } else if (b<n2) {

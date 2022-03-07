@@ -13,11 +13,7 @@ template<class T> inline static void print(T *arr, int size){
 template<class T> static int partition(T *arr, int start, int end) {
     T pivot = arr[end];
     int i = start;
-    for(int j=start; j<=end; j++) {
-        if(arr[j] < pivot) {
-            swap(arr[i++], arr[j]);
-        }
-    }
+    for(int j=start; j<=end; j++) if(arr[j] < pivot) swap(arr[i++], arr[j]);
     swap(arr[i], arr[end]);
     return i;
 }
