@@ -23,8 +23,7 @@ int main(){
     for(int i=0; i<n; i++){
         for(int j=0; j<n; j++){
             for(int k=0; k<n; k++){
-                if(i!=j && i!=k && j!=k) 
-                graph[j][k] = MIN(graph[j][k], graph[j][i]+graph[i][k]);
+                if(i!=j && i!=k && j!=k) graph[j][k] = MIN(graph[j][k], graph[j][i]+graph[i][k]);
             }
         }
     }
