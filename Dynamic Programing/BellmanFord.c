@@ -36,8 +36,9 @@ int main(){
         }
     }
 
+    printf("\nVertex\t - \tDistance from source\n");
     for(int i=0; i<n; i++) {
-        printf("%d ", V[i]);
+        printf("%3d\t - \t%3d\n", i, V[i]);
     }
     return 0;
 }
