@@ -1,8 +1,6 @@
 #include<stdio.h>
 
-int MIN(int a, int b) {
-    return (a<b) ? a : b;
-}
+#define MIN(a,b) (( a<b) ? a : b)
 
 int main(){
     int n;
