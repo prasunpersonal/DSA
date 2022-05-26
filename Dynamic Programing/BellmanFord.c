@@ -22,7 +22,7 @@ int main(){
         }
     }
 
-    int V[n], all_relaxed = 0;
+    int V[n];
     V[0] = 0;
     for(int i=1; i<n; i++) V[i] = __INT_MAX__;
 
