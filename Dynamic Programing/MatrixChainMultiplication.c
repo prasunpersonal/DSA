@@ -62,7 +62,7 @@ int MatrixChainMultiplication(int p[], int n) {
     }
     printf("\n");
 
-    printf("%s", parenthesize(1, n-1, n, S));
+    printf("Minimum number of multiplication is: %d, for %s", M[1][n-1], parenthesize(1, n-1, n, S));
 }
 
 int main(){
