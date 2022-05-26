@@ -10,13 +10,12 @@ int main(){
     int graph[n][n];
     for(int i=0; i<n; i++) graph[i][i] = 0;
 
-    printf("\nEnter value of edge between 2 vertices (Put '-1' if there is no edge):\n");
+    printf("\nEnter value of edge between 2 vertices (Put '99999' if there is no edge):\n");
     for(int i=0; i<n; i++){
         for(int j=0; j<n; j++){
             if(i != j) {
                 printf("Enter value of edge V[%d] -> V[%d]: ", i, j);
                 scanf("%d", &graph[i][j]);
-                if(graph[i][j] < 0) graph[i][j] = (__INT_MAX__ / 2);
             }
         }
     }
