@@ -24,7 +24,7 @@ int main(){
 
     int V[n];
     V[0] = 0;
-    for(int i=1; i<n; i++) V[i] = __INT_MAX__;
+    for(int i=1; i<n; i++) V[i] = INF;
 
     for(int i=1; i<n; i++){
         for(int j=0; j<n; j++){
