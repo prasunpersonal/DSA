@@ -21,11 +21,7 @@ int MatrixChainMultiplication(int p[], int n) {
 
     for (int i = 0; i < n; i++) {
         M[i][i] = 0;
-        M[i][0] = 0;
-        M[0][i] = 0;
         S[i][i] = 0;
-        S[i][0] = 0;
-        S[0][i] = 0;
     }
 
     for(int d=1; d<n-1; d++) {
