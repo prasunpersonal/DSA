@@ -40,8 +40,8 @@ int main(){
 
     printf("Enter no of color: ");
     scanf("%d", &c);
-    int colors[c];
-    for(int i=0; i<c; i++) colors[i] = 0;
+    int colors[v];
+    for(int i=0; i<v; i++) colors[i] = 0;
 
     if(colorGraph(v, graph, c, colors, 0)) {
         for(int i=0; i<v; i++) {
